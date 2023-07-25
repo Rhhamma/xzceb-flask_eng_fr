@@ -10,7 +10,7 @@ def english_to_french():
     # Translate the text
     translated_text = translator.english_to_french(textToTranslate)
     session['translated_text'] = f"Translated text to French: {translated_text}"
-    return "Translation successful!"
+    return translated_text
 
 @app.route("/frenchToEnglish")
 def french_to_english():
@@ -18,7 +18,7 @@ def french_to_english():
     # Translate the text
     translated_text = translator.french_to_english(textToTranslate)
     session['translated_text'] = f"Translated text to English: {translated_text}"
-    return "Translation successful!"
+    return translated_text
 
 @app.route("/")
 def renderIndexPage():

@@ -1,14 +1,14 @@
+from flask import Flask, render_template, request, session
 from machinetranslation import translator
-from flask import Flask, render_template, request, jsonify
-import json
 
 app = Flask("Web Translator")
+app.secret_key = "your_secret_key"  # Add a secret key for session usage
 
 @app.route("/englishToFrench")
 def english_to_french():
     textToTranslate = request.args.get('textToTranslate')
     # Translate the text
-    translated_text = english_to_french(textToTranslate)
+    translated_text = translator.english_to_french(textToTranslate)
     session['translated_text'] = f"Translated text to French: {translated_text}"
     return "Translation successful!"
 
@@ -16,14 +16,14 @@ def english_to_french():
 def french_to_english():
     textToTranslate = request.args.get('textToTranslate')
     # Translate the text
-    translated_text = french_to_english(textToTranslate)
+    translated_text = translator.french_to_english(textToTranslate)
     session['translated_text'] = f"Translated text to English: {translated_text}"
     return "Translation successful!"
+
 @app.route("/")
 def renderIndexPage():
-    # Write the code to render template
-    return render_template('index.html')
+    translated_text = session.pop('translated_text', None)
+    return render_template('index.html', translated_text=translated_text)
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=8080)
-

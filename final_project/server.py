@@ -9,15 +9,16 @@ def english_to_french():
     textToTranslate = request.args.get('textToTranslate')
     # Translate the text
     translated_text = english_to_french(textToTranslate)
-    return translated_text
+    session['translated_text'] = f"Translated text to French: {translated_text}"
+    return "Translation successful!"
 
 @app.route("/frenchToEnglish")
 def french_to_english():
     textToTranslate = request.args.get('textToTranslate')
     # Translate the text
     translated_text = french_to_english(textToTranslate)
-    return translated_text
-
+    session['translated_text'] = f"Translated text to English: {translated_text}"
+    return "Translation successful!"
 @app.route("/")
 def renderIndexPage():
     # Write the code to render template

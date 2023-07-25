@@ -1,26 +1,19 @@
-<!DOCTYPE html>
 <html>
-<head>
-    <title>Web Translator</title>
-</head>
-<body>
-    <h1>Web Translator</h1>
-    <h2>English to French Translation</h2>
-    <form action="/englishToFrench" method="GET">
-        <input type="text" name="textToTranslate" placeholder="Enter English text">
-        <input type="submit" value="Translate">
-    </form>
-
-    <h2>French to English Translation</h2>
-    <form action="/frenchToEnglish" method="GET">
-        <input type="text" name="textToTranslate" placeholder="Enter French text">
-        <input type="submit" value="Translate">
-    </form>
-
-    <!-- Display the translated text here -->
-    <div>
-        <h2>Translated Text:</h2>
-        <p>{{ translated_text }}</p>
-    </div>
-</body>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="./static/mywebscript.js"></script>
+    <div class="card">
+    <div class="card-body">
+        <div class="mb-3">
+            <label class="form-label">Text to be translated</label>
+            <input type="textarea" class="form-control" id="textToTranslate">
+        </div>
+    
+        <div style="padding: 25px 25px 25px 25px;">
+            <button onclick="translateToFrench()" class="btn btn-secondary">Translate to French</button>        
+            <button onclick="translateToEnglish()" class="btn btn-secondary">Translate to English</button>        
+        </div>
+    
+        <div id="translated_text" style="padding: 25px 25px 25px 25px;"></div>
+        </div>
+  </div>
 </html>
